@@ -71,7 +71,7 @@ public class ComputerGuessesPanel extends JPanel {
         this.add(Box.createRigidArea(new Dimension(0,10)));
     }
 
-    private JButton lowerButton(JLabel guessMessage) {
+    private void lowerButton(JLabel guessMessage) {
         JButton lowerBtn = new JButton("Lower");
         lowerBtn.addActionListener(e -> {
             upperBound = Math.min(upperBound, lastGuess);
@@ -83,10 +83,9 @@ public class ComputerGuessesPanel extends JPanel {
         this.add(lowerBtn);
         lowerBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(Box.createRigidArea(new Dimension(0,10)));
-        return lowerBtn;
     }
 
-    private JButton correctButton(JPanel cardsPanel, Consumer<GameResult> gameFinishedCallback, JLabel guessMessage) {
+    private void correctButton(JPanel cardsPanel, Consumer<GameResult> gameFinishedCallback, JLabel guessMessage) {
         JButton correctBtn = new JButton("Equal");
         correctBtn.addActionListener(e -> {
             guessMessage.setText("I guess ___.");
@@ -101,10 +100,9 @@ public class ComputerGuessesPanel extends JPanel {
         this.add(correctBtn);
         correctBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(Box.createRigidArea(new Dimension(0, 10)));
-        return correctBtn;
     }
 
-    private JButton higherBtn(JLabel guessMessage) {
+    private void higherBtn(JLabel guessMessage) {
         JButton higherBtn = new JButton("Higher");
         higherBtn.addActionListener(e -> {
             lowerBound = Math.max(lowerBound, lastGuess + 1);
@@ -115,6 +113,5 @@ public class ComputerGuessesPanel extends JPanel {
         });
         this.add(higherBtn);
         higherBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-        return higherBtn;
     }
 }
