@@ -21,6 +21,7 @@ public class StatsPanel extends JPanel {
 
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
+        //create these separate maybe, maybe just leave it...
         JLabel title = new JLabel("Your Stats");
         this.add(title);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -36,8 +37,11 @@ public class StatsPanel extends JPanel {
         resultsPanel.setLayout(new GridLayout(0, 2));
         resultsPanel.add(new JLabel("Guesses"));
         resultsPanel.add(new JLabel("Games"));
+
+        //probably should put this for loop in its own spot
         for(int binIndex=0; binIndex<BIN_EDGES.length; binIndex++){
             String binName;
+            //think about this for the if statement too
             if(binIndex == BIN_EDGES.length-1){
                 // last bin
                 binName = BIN_EDGES[binIndex] + " or more";
@@ -65,6 +69,7 @@ public class StatsPanel extends JPanel {
 
         this.add(Box.createVerticalGlue());
 
+        //maybe something for quit here
         JButton quit = new JButton("Back to Home");
         quit.addActionListener(e -> {
             // See itemStateChanged in https://docs.oracle.com/javase/tutorial/uiswing/examples/layout/CardLayoutDemoProject/src/layout/CardLayoutDemo.java
@@ -83,7 +88,7 @@ public class StatsPanel extends JPanel {
         });
     }
 
-
+    //this is good
     private void clearResults(){
         for(JLabel lbl : resultsLabels){
             lbl.setText("--");
@@ -102,12 +107,14 @@ public class StatsPanel extends JPanel {
             if(binIndex == BIN_EDGES.length-1){
                 // last bin
                 // Sum all the results from lowerBound on up
+                //maybe make sum its own thing
                 for(int numGuesses=lowerBound; numGuesses<stats.maxNumGuesses(); numGuesses++){
                     numGames += stats.numGames(numGuesses);
                 }
             }
             else{
                 int upperBound = BIN_EDGES[binIndex+1];
+                //do same thing here
                 for(int numGuesses=lowerBound; numGuesses <= upperBound; numGuesses++) {
                     numGames += stats.numGames(numGuesses);
                 }

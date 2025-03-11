@@ -72,6 +72,7 @@ public class GameOverPanel extends JPanel {
     public void setGameResults(GameResult result){
         this.gameResult = result;
 
+        //this could be moved to its own method that returns a string or something
         answerTxt.setText("The answer was " + result.correctValue + ".");
         if(result.numGuesses == 1){
             numGuessesTxt.setText((result.humanWasPlaying ? "You" : "I") + " guessed it on the first try!");
@@ -80,6 +81,7 @@ public class GameOverPanel extends JPanel {
             numGuessesTxt.setText("It took " + (result.humanWasPlaying ? "you" : "me") + " " + result.numGuesses + " guesses.");
         }
 
+        //This I/O needs separated into its own method.
         if(result.humanWasPlaying){
             // write stats to file
             try(CSVWriter writer = new CSVWriter(new FileWriter(StatsFile.FILENAME, true))) {

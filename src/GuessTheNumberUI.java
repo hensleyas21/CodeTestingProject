@@ -67,6 +67,7 @@ public class GuessTheNumberUI {
         // TODO: your refactoring should include some changes to the lambda expression in the following line
         // HINT: Look at what GameOverPanel.setGameResults does now. Your code should do the same operations,
         //       but refactor how those are structured, which means the lambda will need to change.
+        //IM not sure, but i think we need to refactor the other file first maybe.
         JPanel humanGuessesPanel = new HumanGuessesPanel(cardsPanel, gameResult -> {gameOverPanel.setGameResults(gameResult);});
         addToCards(cardsPanel, humanGuessesPanel, ScreenID.HUMAN_PLAY.name());
 

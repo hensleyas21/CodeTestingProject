@@ -27,6 +27,7 @@ public class ComputerGuessesPanel extends JPanel {
 
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
+        //not sure if maybe text adjustment needs its own method
         JLabel guessMessage = new JLabel("I guess ___.");
         guessMessage.setAlignmentX(Component.LEFT_ALIGNMENT);
         this.add(guessMessage);
@@ -34,11 +35,13 @@ public class ComputerGuessesPanel extends JPanel {
 
         this.add(Box.createRigidArea(new Dimension(0, 40)));
 
+        //same thing here, maybe consider moving it all to its own method
         JLabel prompt = new JLabel("Your number is...");
         this.add(prompt);
         prompt.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(Box.createRigidArea(new Dimension(0,10)));
 
+        //definitely its own method, especially for the math
         JButton lowerBtn = new JButton("Lower");
         lowerBtn.addActionListener(e -> {
             upperBound = Math.min(upperBound, lastGuess);
@@ -51,6 +54,7 @@ public class ComputerGuessesPanel extends JPanel {
         lowerBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(Box.createRigidArea(new Dimension(0,10)));
 
+        //same as lower
         JButton correctBtn = new JButton("Equal");
         correctBtn.addActionListener(e -> {
             guessMessage.setText("I guess ___.");
@@ -66,6 +70,7 @@ public class ComputerGuessesPanel extends JPanel {
         correctBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(Box.createRigidArea(new Dimension(0,10)));
 
+        //same as lower and equal
         JButton higherBtn = new JButton("Higher");
         higherBtn.addActionListener(e -> {
             lowerBound = Math.max(lowerBound, lastGuess + 1);
@@ -78,6 +83,7 @@ public class ComputerGuessesPanel extends JPanel {
         higherBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
+        //i dont think we should touch this...
         this.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent e) {
                 numGuesses = 0;
