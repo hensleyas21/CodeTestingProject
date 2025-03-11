@@ -36,14 +36,13 @@ public class ComputerGuessesPanel extends JPanel {
         prompt();
 
         //definitely its own method, especially for the math
-        JButton lowerBtn = lowerButton(guessMessage);
+        lowerButton(guessMessage);
 
         //same as lower
-        JButton correctBtn = correctButton(cardsPanel, gameFinishedCallback, guessMessage);
+        correctButton(cardsPanel, gameFinishedCallback, guessMessage);
 
         //same as lower and equal
-        JButton higherBtn = higherBtn(guessMessage);
-
+        higherBtn(guessMessage);
 
         this.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent e) {
