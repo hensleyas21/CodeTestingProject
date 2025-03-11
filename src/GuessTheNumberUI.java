@@ -68,7 +68,7 @@ public class GuessTheNumberUI {
         // HINT: Look at what GameOverPanel.setGameResults does now. Your code should do the same operations,
         //       but refactor how those are structured, which means the lambda will need to change.
         //IM not sure, but i think we need to refactor the other file first maybe.
-        JPanel humanGuessesPanel = new HumanGuessesPanel(cardsPanel, gameResult -> {gameOverPanel.setGameResults(gameResult);});
+        JPanel humanGuessesPanel = new HumanGuessesPanel(cardsPanel, gameResult -> {gameOverPanel.gameResultsToFile(gameResult);});
         addToCards(cardsPanel, humanGuessesPanel, ScreenID.HUMAN_PLAY.name());
 
         // COMPUTER_PLAY_LAUNCH
@@ -76,7 +76,7 @@ public class GuessTheNumberUI {
         addToCards(cardsPanel, computerPlayLaunchPanel, ScreenID.COMPUTER_PLAY_LAUNCH.name());
 
         // COMPUTER_PLAY
-        JPanel computerGuessesPanel = new ComputerGuessesPanel(cardsPanel, gameResult -> {gameOverPanel.setGameResults(gameResult);});
+        JPanel computerGuessesPanel = new ComputerGuessesPanel(cardsPanel, gameResult -> {gameOverPanel.gameResultsToFile(gameResult);});
         addToCards(cardsPanel, computerGuessesPanel, ScreenID.COMPUTER_PLAY.name());
 
         // STATS
