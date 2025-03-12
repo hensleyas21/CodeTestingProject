@@ -25,8 +25,10 @@ public class TestHumanGuessesGame {
         // target is set to be a random int [0, UPPER_BOUND) + 1 and UPPER_BOUND = 1000,
         // target = 501 since the MockRandom.nextInt(int bound) returns (bound * .5)
         assertEquals(GuessResult.LOW, hgg.makeGuess(100));
+        assertEquals(GuessResult.LOW, hgg.makeGuess(1));
         assertEquals(GuessResult.LOW, hgg.makeGuess(500));
         assertEquals(GuessResult.HIGH, hgg.makeGuess(900));
+        assertEquals(GuessResult.HIGH, hgg.makeGuess(1000));
         assertEquals(GuessResult.HIGH, hgg.makeGuess(502));
         assertEquals(GuessResult.CORRECT, hgg.makeGuess(501));
     }
