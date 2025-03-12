@@ -81,10 +81,7 @@ public class GameOverPanel extends JPanel {
             numGuessesTxt.setText("It took " + (result.humanWasPlaying ? "you" : "me") + " " + result.numGuesses + " guesses.");
         }
 
-        //This I/O needs separated into its own method.
-        if(result.humanWasPlaying){
-            gameResultsToFile(result);
-        }
+
     }
 
     public void gameResultsToFile(GameResult result) {
