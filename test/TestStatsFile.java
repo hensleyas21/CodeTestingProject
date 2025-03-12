@@ -104,7 +104,6 @@ public class TestStatsFile {
         MockStatsFile mock = new MockStatsFile();
         mock.values = new String[]{"2025-03-12T14:30:00", "five"};
 
-        Pair<LocalDateTime,Integer> testParse = mock.parseDateAndGuesses(mock.values);
 
         assertThrows(NumberFormatException.class, () -> {
             mock.parseDateAndGuesses(mock.values);
@@ -115,8 +114,6 @@ public class TestStatsFile {
     public void TestParsedValuesIncorrectDateFormat(){
         MockStatsFile mock = new MockStatsFile();
         mock.values = new String[]{"202-03-12T14:30", "5"};
-
-        Pair<LocalDateTime,Integer> testParse = mock.parseDateAndGuesses(mock.values);
 
         assertThrows(DateTimeParseException.class, () -> {
             mock.parseDateAndGuesses(mock.values);
