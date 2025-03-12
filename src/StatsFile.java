@@ -1,5 +1,6 @@
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -30,12 +31,9 @@ public class StatsFile extends GameStats {
             while ((values = csvReader.readNext()) != null) {
                 // values should have the date and the number of guesses as the two fields
                 try {
-                    LocalDateTime timestamp = LocalDateTime.parse(values[0]);
-                    int numGuesses = Integer.parseInt(values[1]);
-
-                    if (timestamp.isAfter(limit)) {
-                        statsMap.put(numGuesses, 1 + statsMap.getOrDefault(numGuesses, 0));
-                    }
+                    Pair<LocalDateTime, Integer> parsedValues = parseDateAndGuesses(values);
+                    int numGuesses = parsedValues.getRight();
+                    addStat(limit, parsedValues.getLeft(),numGuesses);
                 }
                 catch(NumberFormatException nfe){
                     // NOTE: In a full implementation, we would log this error and possibly alert the user
@@ -52,6 +50,19 @@ public class StatsFile extends GameStats {
         } catch (IOException e) {
             // NOTE: In a full implementation, we would log this error and alert the user
             // NOTE: For this project, you do not need unit tests for handling this exception.
+        }
+    }
+
+
+    public Pair<LocalDateTime, Integer> parseDateAndGuesses(String[] values)throws NumberFormatException, DateTimeParseException{
+        LocalDateTime timestamp = LocalDateTime.parse(values[0]);
+        Integer numGuesses = Integer.parseInt(values[1]);
+        return Pair.of(timestamp,numGuesses);
+    }
+
+    public void addStat(LocalDateTime limit, LocalDateTime timestamp, int numGuesses){
+        if (timestamp.isAfter(limit)) {
+            statsMap.put(numGuesses, 1 + statsMap.getOrDefault(numGuesses, 0));
         }
     }
 

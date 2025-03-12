@@ -1,16 +1,21 @@
+import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import static org.junit.jupiter.api.Assertions.*;
+import java.time.format.DateTimeParseException;
 
 
 public class TestStatsFile {
 
     public static class MockStatsFile extends StatsFile {
+        String [] values = null;
 
         public MockStatsFile() {
             this.statsMap = new TreeMap<>();
+            this.values = new String[]{"2025-03-12T14:30:00", "5"};
         }
 
         public void setNumGames(int numGuesses, int numGamesWithThatCount){
@@ -82,9 +87,44 @@ public class TestStatsFile {
         assertEquals(-7,mock.maxNumGuesses());
     }
 
+    @Test
+    public void TestParsedValues(){
+        MockStatsFile mock = new MockStatsFile();
 
+        Pair<LocalDateTime,Integer> testParse = mock.parseDateAndGuesses(mock.values);
+        LocalDateTime expectedDateTime = LocalDateTime.of(2025, 3, 12, 14, 30, 0);
+        int expectedGuesses = 5;
 
+        assertEquals(expectedGuesses,testParse.getRight());
+        assertEquals(expectedDateTime,testParse.getLeft());
+    }
 
+    @Test
+    public void TestParsedValuesToThrowErrorOnNonNumeric(){
+        MockStatsFile mock = new MockStatsFile();
+        mock.values = new String[]{"2025-03-12T14:30:00", "five"};
 
+        Pair<LocalDateTime,Integer> testParse = mock.parseDateAndGuesses(mock.values);
 
+        assertThrows(NumberFormatException.class, () -> {
+            mock.parseDateAndGuesses(mock.values);
+        });
+        }
+
+    @Test
+    public void TestParsedValuesIncorrectDateFormat(){
+        MockStatsFile mock = new MockStatsFile();
+        mock.values = new String[]{"202-03-12T14:30", "5"};
+
+        Pair<LocalDateTime,Integer> testParse = mock.parseDateAndGuesses(mock.values);
+
+        assertThrows(DateTimeParseException.class, () -> {
+            mock.parseDateAndGuesses(mock.values);
+        });
+    }
 }
+
+
+
+
+
