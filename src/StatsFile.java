@@ -19,7 +19,7 @@ public class StatsFile extends GameStats {
 
     // maps the number of guesses required to the number of games within
     // the past 30 days where the person took that many guesses
-    private SortedMap<Integer, Integer> statsMap;
+    protected SortedMap<Integer, Integer> statsMap;
 
     public StatsFile(){
         statsMap = new TreeMap<>();
