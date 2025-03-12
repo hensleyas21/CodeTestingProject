@@ -8,24 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestStatsFile {
 
     public static class MockStatsFile extends StatsFile {
-        protected SortedMap<Integer, Integer> mockMap;
 
         public MockStatsFile() {
-            mockMap = new TreeMap<>();
+            this.statsMap = new TreeMap<>();
         }
 
         public void setNumGames(int numGuesses, int numGamesWithThatCount){
-            mockMap.put(numGuesses,numGamesWithThatCount);
-        }
-
-        @Override
-        public int numGames(int numGuesses) {
-            return mockMap.getOrDefault(numGuesses, 0);
-        }
-
-        @Override
-        public int maxNumGuesses(){
-            return (mockMap.isEmpty() ? 0 : mockMap.lastKey());
+            this.statsMap.put(numGuesses,numGamesWithThatCount);
         }
     }
 
@@ -48,8 +37,6 @@ public class TestStatsFile {
         assertEquals(0,mock.numGames(10));
         assertEquals(0,mock.numGames(15));
     }
-
-
 
     @Test
     public void TestNumGamesWhenThereAreNoGamesWithThatNumberOfGuesses(){
