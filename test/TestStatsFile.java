@@ -4,7 +4,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 import static org.junit.jupiter.api.Assertions.*;
 
-//using dependency injection
+
 public class TestStatsFile {
 
     public static class MockStatsFile extends StatsFile {
@@ -18,6 +18,7 @@ public class TestStatsFile {
         }
     }
 
+    //using dependency injection
     @Test
     public void TestNumGamesWithMultipleGames(){
         MockStatsFile mock = new MockStatsFile();
