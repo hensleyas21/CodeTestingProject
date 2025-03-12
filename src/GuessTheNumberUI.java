@@ -80,7 +80,6 @@ public class GuessTheNumberUI {
 
         // COMPUTER_PLAY
         JPanel computerGuessesPanel = new ComputerGuessesPanel(cardsPanel, gameResult -> {
-            gameOverPanel.gameResultsToFile(gameResult);
             gameOverPanel.setGameResults(gameResult);
         });
         addToCards(cardsPanel, computerGuessesPanel, ScreenID.COMPUTER_PLAY.name());
