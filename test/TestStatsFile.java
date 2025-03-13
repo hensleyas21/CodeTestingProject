@@ -25,7 +25,7 @@ public class TestStatsFile {
 
     //using dependency injection
     @Test
-    public void TestNumGamesWithMultipleGames(){
+    public void testNumGamesWithMultipleGames(){
         MockStatsFile mock = new MockStatsFile();
         mock.setNumGames(7,10);
         mock.setNumGames(10,3);
@@ -37,7 +37,7 @@ public class TestStatsFile {
     }
 
     @Test
-    public void TestNumGamesWithEmptyMap(){
+    public void testNumGamesWithEmptyMap(){
         MockStatsFile mock = new MockStatsFile();
         assertEquals(0,mock.numGames(7));
         assertEquals(0,mock.numGames(10));
@@ -45,7 +45,7 @@ public class TestStatsFile {
     }
 
     @Test
-    public void TestNumGamesWhenThereAreNoGamesWithThatNumberOfGuesses(){
+    public void testNumGamesWhenThereAreNoGamesWithThatNumberOfGuesses(){
         MockStatsFile mock = new MockStatsFile();
         assertEquals(0,mock.numGames(10));
         assertEquals(0,mock.numGames(1000));
@@ -53,14 +53,14 @@ public class TestStatsFile {
     }
 
     @Test
-    public void TestNumGamesWithNegativeGuesses(){
+    public void testNumGamesWithNegativeGuesses(){
         MockStatsFile mock = new MockStatsFile();
         assertEquals(0,mock.numGames(-10));
         assertEquals(0,mock.numGames(-1000));
     }
 
     @Test
-    public void TestMaxNumGuessesWithMultipleGames(){
+    public void testMaxNumGuessesWithMultipleGames(){
         MockStatsFile mock = new MockStatsFile();
 
         mock.setNumGames(7,10);
@@ -71,13 +71,13 @@ public class TestStatsFile {
     }
 
     @Test
-    public void TestMaxNumGuessesWithEmptyTree(){
+    public void testMaxNumGuessesWithEmptyTree(){
         MockStatsFile mock = new MockStatsFile();
         assertEquals(0,mock.maxNumGuesses());
     }
 
     @Test
-    public void TestMaxNumGuessesWithNegativeGuesses(){
+    public void testMaxNumGuessesWithNegativeGuesses(){
         MockStatsFile mock = new MockStatsFile();
 
         mock.setNumGames(-7,10);
@@ -88,7 +88,7 @@ public class TestStatsFile {
     }
 
     @Test
-    public void TestParsedValues(){
+    public void testParsedValues(){
         MockStatsFile mock = new MockStatsFile();
 
         Pair<LocalDateTime,Integer> testParse = mock.parseDateAndGuesses(mock.values);
@@ -100,7 +100,7 @@ public class TestStatsFile {
     }
 
     @Test
-    public void TestParsedValuesToThrowErrorOnNonNumeric(){
+    public void testParsedValuesToThrowErrorOnNonNumeric(){
         MockStatsFile mock = new MockStatsFile();
         mock.values = new String[]{"2025-03-12T14:30:00", "five"};
 
@@ -111,7 +111,7 @@ public class TestStatsFile {
         }
 
     @Test
-    public void TestParsedValuesIncorrectDateFormat(){
+    public void testParsedValuesIncorrectDateFormat(){
         MockStatsFile mock = new MockStatsFile();
         mock.values = new String[]{"202-03-12T14:30", "5"};
 

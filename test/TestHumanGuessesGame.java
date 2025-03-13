@@ -20,7 +20,7 @@ public class TestHumanGuessesGame {
 
     //using dependency injection
     @Test
-    public void TestMakeGuess() {
+    public void testMakeGuess() {
         HumanGuessesGame hgg = new HumanGuessesGame(new MockRandom());
         // target is set to be a random int [0, UPPER_BOUND) + 1 and UPPER_BOUND = 1000,
         // target = 501 since the MockRandom.nextInt(int bound) returns (bound * .5)
@@ -34,7 +34,7 @@ public class TestHumanGuessesGame {
     }
 
     @Test
-    public void TestGetNumGuesses() {
+    public void testGetNumGuesses() {
         HumanGuessesGame hgg = new HumanGuessesGame(new MockRandom());
 
         assertEquals(0, hgg.getNumGuesses());
@@ -50,7 +50,7 @@ public class TestHumanGuessesGame {
     }
 
     @Test
-    public void TestIsDone() {
+    public void testIsDone() {
         HumanGuessesGame hgg = new HumanGuessesGame(new MockRandom());
 
         assertFalse(hgg.isDone());
