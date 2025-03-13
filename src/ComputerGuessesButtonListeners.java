@@ -8,51 +8,51 @@ public class ComputerGuessesButtonListeners {
     private int lowerBound; // correct number is >= lowerBound
 
 
-public ComputerGuessesButtonListeners(){
-    reset();
-}
+    public ComputerGuessesButtonListeners(){
+        reset();
+    }
 
-public void reset() {
-    this.numGuesses = 0;
-    this.upperBound = 1000;
-    this.lowerBound = 1;
-}
+    public void reset() {
+        this.numGuesses = 0;
+        this.upperBound = 1000;
+        this.lowerBound = 1;
+    }
 
-public int getLastGuess(){
-    return this.lastGuess;
-}
+    public int getLastGuess(){
+        return this.lastGuess;
+    }
 
-public int getNumGuesses(){
-    return this.numGuesses;
-}
+    public int getNumGuesses(){
+        return this.numGuesses;
+    }
 
-public int calcLastGuess(){
-    this.lastGuess = (this.lowerBound + this.upperBound + 1) / 2;
-    return this.lastGuess;
-}
+    public int calcLastGuess(){
+        this.lastGuess = (this.lowerBound + this.upperBound + 1) / 2;
+        return this.lastGuess;
+    }
 
-public void onLowerButtonPressed(){
-    this.upperBound = findUpperBound(this.upperBound,this.lastGuess);
-    this.lastGuess = LastGuess(this.upperBound,this.lowerBound);
-    this.numGuesses += 1;
-}
+    public void onLowerButtonPressed(){
+        this.upperBound = findUpperBound(this.upperBound,this.lastGuess);
+        this.lastGuess = LastGuess(this.upperBound,this.lowerBound);
+        this.numGuesses += 1;
+    }
 
-public void onHigherButtonPressed(){
-    this.lowerBound = findLowerBound(this.lowerBound,this.lastGuess);
-    this.lastGuess = LastGuess(this.upperBound,this.lowerBound);
-    this.numGuesses += 1;
-}
+    public void onHigherButtonPressed(){
+        this.lowerBound = findLowerBound(this.lowerBound,this.lastGuess);
+        this.lastGuess = LastGuess(this.upperBound,this.lowerBound);
+        this.numGuesses += 1;
+    }
 
-public static int findUpperBound(int upperBound, int lastGuess){
-    return Math.min(upperBound,lastGuess);
-}
+    public static int findUpperBound(int upperBound, int lastGuess){
+        return Math.min(upperBound,lastGuess);
+    }
 
-public static int findLowerBound(int lowerBound, int lastGuess){
-    return Math.max(lowerBound, lastGuess + 1);
-}
+    public static int findLowerBound(int lowerBound, int lastGuess){
+        return Math.max(lowerBound, lastGuess + 1);
+    }
 
 
-public static int LastGuess(int upperBound, int lowerBound){
-    return (lowerBound + upperBound + 1) / 2;
-}
+    public static int LastGuess(int upperBound, int lowerBound){
+        return (lowerBound + upperBound + 1) / 2;
+    }
 }
