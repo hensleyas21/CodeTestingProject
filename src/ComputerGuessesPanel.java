@@ -74,9 +74,10 @@ public class ComputerGuessesPanel extends JPanel {
     private void lowerButton(JLabel guessMessage) {
         JButton lowerBtn = new JButton("Lower");
         lowerBtn.addActionListener(e -> {
-            upperBound = Math.min(upperBound, lastGuess);
-
-            lastGuess = (lowerBound + upperBound + 1) / 2;
+            //this is a bug, needs a -1 for upper bound on lastGuess
+            //upperBound = Math.min(upperBound, lastGuess);
+            upperBound = ComputerGuessesButtonListeners.findUpperBound(upperBound,lastGuess);
+            lastGuess = ComputerGuessesButtonListeners.LastGuess(upperBound,lowerBound);
             numGuesses += 1;
             guessMessage.setText("I guess " + lastGuess + ".");
         });
@@ -105,9 +106,9 @@ public class ComputerGuessesPanel extends JPanel {
     private void higherButton(JLabel guessMessage) {
         JButton higherBtn = new JButton("Higher");
         higherBtn.addActionListener(e -> {
-            lowerBound = Math.max(lowerBound, lastGuess + 1);
+            lowerBound = ComputerGuessesButtonListeners.findLowerBound(lowerBound,lastGuess);
 
-            lastGuess = (lowerBound + upperBound + 1) / 2;
+            lastGuess = ComputerGuessesButtonListeners.LastGuess(upperBound,lowerBound);
             numGuesses += 1;
             guessMessage.setText("I guess " + lastGuess + ".");
         });
