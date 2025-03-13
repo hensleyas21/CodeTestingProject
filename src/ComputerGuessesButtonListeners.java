@@ -6,7 +6,7 @@ public class ComputerGuessesButtonListeners {
     // They are updated after each guess is made
     private int upperBound; // correct number is <= upperBound
     private int lowerBound; // correct number is >= lowerBound
-    
+
     public ComputerGuessesButtonListeners(){
         reset();
     }
