@@ -42,7 +42,7 @@ public class ComputerGuessesPanel extends JPanel {
         correctButton(cardsPanel, gameFinishedCallback, guessMessage);
 
         //same as lower and equal
-        higherBtn(guessMessage);
+        higherButton(guessMessage);
 
         this.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent e) {
@@ -103,7 +103,7 @@ public class ComputerGuessesPanel extends JPanel {
         this.add(Box.createRigidArea(new Dimension(0, 10)));
     }
 
-    private void higherBtn(JLabel guessMessage) {
+    private void higherButton(JLabel guessMessage) {
         JButton higherBtn = new JButton("Higher");
         higherBtn.addActionListener(e -> {
             lowerBound = ComputerGuessesButtonListeners.findLowerBound(lowerBound,lastGuess);
