@@ -66,6 +66,15 @@ public class StatsFile extends GameStats {
         }
     }
 
+    public int sumGames(int lowerBound, int upperBound, GameStats stats){
+        int numGames = 0;
+        for(int numGuesses=lowerBound; numGuesses <= upperBound; numGuesses++) {
+            numGames += stats.numGames(numGuesses);
+        }
+
+        return  numGames;
+    }
+
     @Override
     public int numGames(int numGuesses) {
         return statsMap.getOrDefault(numGuesses, 0);

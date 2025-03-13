@@ -119,6 +119,19 @@ public class TestStatsFile {
             mock.parseDateAndGuesses(mock.values);
         });
     }
+
+
+    @Test
+    public void TestSumGames(){
+        MockStatsFile mock = new MockStatsFile();
+        mock.setNumGames(7,10);
+        mock.setNumGames(10,3);
+        mock.setNumGames(15,4);
+
+        assertEquals(0,mock.sumGames(1,1,mock));
+        assertEquals(0,mock.sumGames(2,4,mock));
+        assertEquals(17,mock.sumGames(5,15,mock));
+    }
 }
 
 

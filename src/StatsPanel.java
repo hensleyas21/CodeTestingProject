@@ -71,12 +71,12 @@ public class StatsPanel extends JPanel {
                 // last bin
                 // Sum all the results from lowerBound on up
                 //maybe make sum its own thing
-                numGames = sumGames(lowerBound,stats.maxNumGuesses(),stats);
+                numGames = stats.sumGames(lowerBound,stats.maxNumGuesses(),stats);
             }
             else{
                 int upperBound = BIN_EDGES[binIndex+1];
                 //do same thing here
-                numGames = sumGames(lowerBound,upperBound,stats);
+                numGames = stats.sumGames(lowerBound,upperBound,stats);
             }
 
             JLabel resultLabel = resultsLabels.get(binIndex);
@@ -137,14 +137,4 @@ public class StatsPanel extends JPanel {
         return  quit;
     }
 
-
-    //needs tests
-    private int sumGames(int lowerBound, int upperBound, GameStats stats){
-        int numGames = 0;
-        for(int numGuesses=lowerBound; numGuesses <= upperBound; numGuesses++) {
-            numGames += stats.numGames(numGuesses);
-        }
-
-        return  numGames;
-    }
 }
