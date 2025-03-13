@@ -1,7 +1,11 @@
 # COMP 452 Code Testing Project
 
-Authors: Austin Hensley and Ethan Kesterholt  
-Date: March 13, 2025
+### Authors
+[Austin Hensley](https://github.com/hensleyas21) and
+[Ethan Kesterholt](https://github.com/Kesterholtem21)
+
+### Date
+March 13, 2025
 
 ## Bugs Found
 - `isDone` is never updated
