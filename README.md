@@ -1,7 +1,7 @@
 # COMP 452 Code Testing Project
 
 ### Authors
-[Austin Hensley](https://github.com/hensleyas21) and
+[Austin Hensley](https://github.com/hensleyas21),
 [Ethan Kesterholt](https://github.com/Kesterholtem21)
 
 ### Date
