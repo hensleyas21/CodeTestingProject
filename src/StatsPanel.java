@@ -100,7 +100,6 @@ public class StatsPanel extends JPanel {
 
     }
 
-    //needs tests
     private void stringFormatBins(){
         for(int binIndex=0; binIndex<BIN_EDGES.length; binIndex++){
             String binName;
