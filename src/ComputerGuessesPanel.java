@@ -47,7 +47,7 @@ public class ComputerGuessesPanel extends JPanel {
         this.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent e) {
 
-                int lastGuess = backend.calcLastGuess();
+                int lastGuess = backend.calcGuess();
                 guessMessage.setText("I guess " + lastGuess + ".");
             }
         });
@@ -87,7 +87,7 @@ public class ComputerGuessesPanel extends JPanel {
             guessMessage.setText("I guess ___.");
 
             // Send the result of the finished game to the callback
-            GameResult result = new GameResult(false, backend.getLastGuess(), backend.getNumGuesses());
+            GameResult result = backend.onEqualButtonPressed();
             gameFinishedCallback.accept(result);
 
             CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();

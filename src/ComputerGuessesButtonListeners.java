@@ -6,8 +6,7 @@ public class ComputerGuessesButtonListeners {
     // They are updated after each guess is made
     private int upperBound; // correct number is <= upperBound
     private int lowerBound; // correct number is >= lowerBound
-
-
+    
     public ComputerGuessesButtonListeners(){
         reset();
     }
@@ -26,21 +25,25 @@ public class ComputerGuessesButtonListeners {
         return this.numGuesses;
     }
 
-    public int calcLastGuess(){
+    public int calcGuess(){
         this.lastGuess = (this.lowerBound + this.upperBound + 1) / 2;
         return this.lastGuess;
     }
 
     public void onLowerButtonPressed(){
         this.upperBound = findUpperBound(this.upperBound,this.lastGuess);
-        this.lastGuess = LastGuess(this.upperBound,this.lowerBound);
+        this.lastGuess = lastGuess(this.upperBound,this.lowerBound);
         this.numGuesses += 1;
     }
 
     public void onHigherButtonPressed(){
         this.lowerBound = findLowerBound(this.lowerBound,this.lastGuess);
-        this.lastGuess = LastGuess(this.upperBound,this.lowerBound);
+        this.lastGuess = lastGuess(this.upperBound,this.lowerBound);
         this.numGuesses += 1;
+    }
+
+    public GameResult onEqualButtonPressed() {
+        return new GameResult(false, getLastGuess(), getNumGuesses());
     }
 
     public static int findUpperBound(int upperBound, int lastGuess){
@@ -51,8 +54,7 @@ public class ComputerGuessesButtonListeners {
         return Math.max(lowerBound, lastGuess + 1);
     }
 
-
-    public static int LastGuess(int upperBound, int lowerBound){
+    public static int lastGuess(int upperBound, int lowerBound){
         return (lowerBound + upperBound + 1) / 2;
     }
 }
